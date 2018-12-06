@@ -1,0 +1,13 @@
+<component name="org.nuxeo.sample.loginPage">
+  <extension target="org.nuxeo.ecm.platform.ui.web.auth.service.PluggableAuthenticationService" point="loginScreen">
+    <loginScreenConfig>
+      <bodyBackgroundStyle>url("${org.nuxeo.ecm.contextPath}/img/login_bg.jpg") no-repeat center center fixed #333</bodyBackgroundStyle>
+      <disableBackgroundSizeCover>false</disableBackgroundSizeCover>
+      <removeNews>true</removeNews>
+      <footerStyle>display: none;</footerStyle>
+      <loginBoxBackgroundStyle>none transparent</loginBoxBackgroundStyle>
+      <loginBoxWidth>300px</loginBoxWidth>
+      <loginButtonBackgroundColor>#dd0f0f</loginButtonBackgroundColor>
+    </loginScreenConfig>
+  </extension>
+</component>

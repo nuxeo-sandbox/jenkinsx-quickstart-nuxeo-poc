@@ -6,3 +6,4 @@ Bundle-Version: 1.0.0
 Bundle-Name: jenkinsx-quickstart-nuxeo-poc-core
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: nuxeo.jenkisx.test.jenkinsx-quickstart-nuxeo-poc-core;singleton=true
+Nuxeo-Component: OSGI-INF/login-contribution.xml
