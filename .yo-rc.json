@@ -2,7 +2,10 @@
   "generator-nuxeo": {
     "lastRemote": "/Users/mariana/.cache/node-yeoman-remote-cache/nuxeo/generator-nuxeo-meta/2.8.0",
     "promptValues": {
-      "package": "nuxeo.jenkisx.test"
+      "package": "nuxeo.jenkisx.test",
+      "parent_package": "nuxeo.jenkisx.test",
+      "parent_artifact": "jenkinsx-quickstart-nuxeo-poc-parent",
+      "parent_version": "1.0.0"
     }
   }
 }
