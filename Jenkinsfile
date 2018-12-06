@@ -36,18 +36,19 @@ pipeline {
       }
       steps {
         container('maven') {
-
+          
           // ensure we're not on a detached head
-          sh "mvn --version"
           sh "git checkout master"
           sh "git config --global credential.helper store"
           sh "jx step git credentials"
 
+          // try to override bad maven global settings mounted as read-only
+         
           // so we can retrieve the version in later steps
           sh "echo \$(jx-release-version) > VERSION"
-          sh "mvn versions:set -DnewVersion=\$(cat VERSION)"
+          sh "mvn -X versions:set -DnewVersion=\$(cat VERSION)"
           sh "jx step tag --version \$(cat VERSION)"
-          sh "mvn clean deploy"
+          sh " mvn clean install -X"
           sh "export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml"
           sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION)"
         }

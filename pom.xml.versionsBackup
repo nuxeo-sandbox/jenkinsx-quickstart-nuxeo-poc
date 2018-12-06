@@ -10,7 +10,7 @@
 
   <groupId>nuxeo.jenkisx.test</groupId>
   <artifactId>jenkinsx-quickstart-nuxeo-poc-parent</artifactId>
-  <version>1.0.0</version>
+  <version>1.0-SNAPSHOT</version>
   <name>Jenkinsx quickstart nuxeo poc parent</name>
   <description/>
   <packaging>pom</packaging>
@@ -25,6 +25,7 @@
   <ciManagement/>
   <developers/>
   <distributionManagement/>
+
   <repositories>
     <repository>
       <id>public</id>
@@ -59,6 +60,7 @@
       </snapshots>
     </repository>
   </repositories>
+
   <pluginRepositories>
     <pluginRepository>
       <id>public</id>
