@@ -3,12 +3,12 @@
   <parent>
     <groupId>nuxeo.jenkisx.test</groupId>
     <artifactId>jenkinsx-quickstart-nuxeo-poc-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.6</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>jenkinsx-quickstart-nuxeo-poc-package</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0.6</version>
   <packaging>zip</packaging>
   <name>Jenkinsx quickstart nuxeo poc package - Jenkinsx poc mp</name>
 
