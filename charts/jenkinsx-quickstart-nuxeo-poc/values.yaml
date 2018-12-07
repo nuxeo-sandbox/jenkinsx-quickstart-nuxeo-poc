@@ -26,9 +26,12 @@ livenessProbe:
   initialDelaySeconds: 100
   periodSeconds: 10
   successThreshold: 1
-  timeoutSeconds: 1
+  failureThreshold: 10
+  timeoutSeconds: 5
 readinessProbe:
   periodSeconds: 10
+  initialDelaySeconds: 50
   successThreshold: 1
   timeoutSeconds: 1
+  failureThreshold: 3
 terminationGracePeriodSeconds: 10
