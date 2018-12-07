@@ -7,7 +7,7 @@
       <footerStyle>display: none;</footerStyle>
       <loginBoxBackgroundStyle>none transparent</loginBoxBackgroundStyle>
       <loginBoxWidth>300px</loginBoxWidth>
-      <loginButtonBackgroundColor>#dd0f0f</loginButtonBackgroundColor>
+      <loginButtonBackgroundColor>#5ff442</loginButtonBackgroundColor>
     </loginScreenConfig>
   </extension>
 </component>
