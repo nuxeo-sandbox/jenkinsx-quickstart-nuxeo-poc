@@ -27,6 +27,12 @@ data:
     nuxeo.db.host={{ .Release.Name }}-postgresql
     nuxeo.db.port=5432
 {{- end }}
+{{- if .Values.nuxeo.elasticsearch.deploy }}
+    elasticsearch.client=RestClient  
+    elasticsearch.clusterName=elasticsearch
+    elasticsearch.addressList={{ .Release.Name }}-elasticsearch-client:9200
+    elasticsearch.indexName=nuxeo
+{{- end }}
   init.sh: |
     #!/bin/sh
 

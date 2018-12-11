@@ -9,3 +9,8 @@ dependencies:
     repository: https://kubernetes-charts.storage.googleapis.com/
     condition: nuxeo.postgresql.deploy
     alias: postgresql
+  - name: elasticsearch
+    version: 1.15.0
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    condition: nuxeo.elasticsearch.deploy
+    alias: elasticsearch  

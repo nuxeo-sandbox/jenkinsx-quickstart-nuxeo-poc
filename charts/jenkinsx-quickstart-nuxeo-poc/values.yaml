@@ -41,6 +41,8 @@ nuxeo:
     dbname: nuxeo
     username: nuxeo
     password: nuxeo
+  elasticsearch:
+    deploy: false 
 
 
   custom_params: |-
@@ -57,3 +59,8 @@ postgresql:
     db-init.sql: |
       CREATE ROLE nuxeo WITH PASSWORD 'nuxeo' LOGIN;
       CREATE DATABASE nuxeo ENCODING 'UTF8' OWNER nuxeo;
+
+## Override values from https://github.com/helm/charts/blob/master/stable/elasticsearch/values.yaml
+elasticsearch:
+  appVersion: "6.2"      
+
