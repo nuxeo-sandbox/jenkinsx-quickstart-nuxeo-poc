@@ -14,11 +14,18 @@ data:
 {{- if .Values.nuxeo.custom_params }}
 {{ toYaml .Values.nuxeo.custom_params | indent 4 }}
 {{- end }}
-
 {{- if .Values.nuxeo.mongodb.deploy }}
     nuxeo.templates=default,mongodb
     nuxeo.mongodb.server=mongodb://{{ .Release.Name }}-mongodb:27017
     nuxeo.mongodb.dbname={{ .Values.nuxeo.mongodb.dbname }} 
+{{- end }}
+{{- if .Values.nuxeo.postgresql.deploy }}
+    nuxeo.templates=default,postgresql
+    nuxeo.db.name={{ .Values.nuxeo.postgresql.dbname }} 
+    nuxeo.db.user={{ .Values.nuxeo.postgresql.username }} 
+    nuxeo.db.password={{ .Values.nuxeo.postgresql.password }} 
+    nuxeo.db.host={{ .Release.Name }}-postgresql
+    nuxeo.db.port=5432
 {{- end }}
   init.sh: |
     #!/bin/sh

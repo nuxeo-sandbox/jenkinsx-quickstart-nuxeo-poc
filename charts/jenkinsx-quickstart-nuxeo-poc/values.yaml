@@ -36,10 +36,24 @@ nuxeo:
   mongodb:
     deploy: false
     dbname: nuxeo
+  postgresql:
+    deploy: false
+    dbname: nuxeo
+    username: nuxeo
+    password: nuxeo
+
+
   custom_params: |-
-    ## add any other params that go into nuxeo.co
+    ## add any other params that go into nuxeo.conf
 
 
 ## Values from here can be customized https://github.com/helm/charts/blob/master/stable/mongodb/values.yaml
 mongodb:
   usePassword: false
+
+## Override values for postgresql from https://github.com/helm/charts/blob/master/stable/postgresql/values.yaml
+postgresql:
+  initdbScripts:
+    db-init.sql: |
+      CREATE ROLE nuxeo WITH PASSWORD 'nuxeo' LOGIN;
+      CREATE DATABASE nuxeo ENCODING 'UTF8' OWNER nuxeo;
