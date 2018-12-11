@@ -1,0 +1,6 @@
+dependencies:
+  - name: mongodb
+    version: 4.0.3
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    condition: nuxeo.mongodb.deploy
+    alias: mongodb
