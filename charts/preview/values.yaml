@@ -15,8 +15,16 @@ cleanup:
     helm.sh/hook: pre-delete
     helm.sh/hook-delete-policy: hook-succeeded
 
+  ## Values from here can be customized https://github.com/helm/charts/blob/master/stable/mongodb/values.yaml
+mongodb:
+  usePassword: false
+nuxeo:
+  mongodb:
+    deploy: true  
 preview:
   image:
     repository:
     tag:
     pullPolicy: IfNotPresent
+     
+ 
