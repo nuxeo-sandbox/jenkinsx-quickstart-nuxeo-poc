@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "fullname" . }}-conf
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+    role: config
+data:
+  nuxeo.conf: |-
+    # Additional nuxeo.conf parameters   
+{{- if .Values.nuxeo.custom_params }}
+{{ toYaml .Values.nuxeo.custom_params | indent 4 }}
+{{- end }}
+
+{{- if .Values.nuxeo.mongodb.deploy }}
+    nuxeo.templates=default,mongodb
+    nuxeo.mongodb.server=mongodb://{{ .Release.Name }}-mongodb:27017
+    nuxeo.mongodb.dbname={{ .Values.nuxeo.mongodb.dbname }} 
+{{- end }}
+  init.sh: |
+    #!/bin/sh
+
+    if [ ! -f $NUXEO_DATA/instance.clid -a -f /opt/nuxeo/connect/connect.properties ]; then
+      . /opt/nuxeo/connect/connect.properties
+      if [ -n "$NUXEO_CONNECT_USERNAME" -a -n "$NUXEO_CONNECT_PASSWORD" -a -n "$NUXEO_STUDIO_PROJECT" ]; then  
+        echo "---> Registering instance on connect"
+        nuxeoctl register $NUXEO_CONNECT_USERNAME $NUXEO_STUDIO_PROJECT dev openshift $NUXEO_CONNECT_PASSWORD
+      fi
+    fi
