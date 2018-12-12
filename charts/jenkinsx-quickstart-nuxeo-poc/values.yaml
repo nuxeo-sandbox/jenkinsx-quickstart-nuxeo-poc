@@ -42,7 +42,9 @@ nuxeo:
     username: nuxeo
     password: nuxeo
   elasticsearch:
-    deploy: false 
+    clusterName: elasticsearch
+    indexName: nuxeo
+    deploy: true 
 
 
   custom_params: |-
@@ -57,14 +59,19 @@ mongodb:
 postgresql:
   image:
     tag: 9.6.11
-  postgresqlPassword: admin
-  postgresqlDatabase: postgres
   initdbScripts:
     db-init.sql: |
       CREATE ROLE nuxeo WITH PASSWORD 'nuxeo' LOGIN;
       CREATE DATABASE nuxeo ENCODING 'UTF8' OWNER nuxeo;
 
 ## Override values from https://github.com/helm/charts/blob/master/stable/elasticsearch/values.yaml
+## these are for a staging cluster only but it needs 2 masters
 elasticsearch:
-  appVersion: "6.2"      
+  appVersion: "6.2"
+  client:
+    replicas: 1
+  master:
+    replicas: 2 
+  data:
+    replicas: 1      
 

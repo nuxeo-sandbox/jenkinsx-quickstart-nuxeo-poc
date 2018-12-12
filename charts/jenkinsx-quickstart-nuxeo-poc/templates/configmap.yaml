@@ -29,9 +29,9 @@ data:
 {{- end }}
 {{- if .Values.nuxeo.elasticsearch.deploy }}
     elasticsearch.client=RestClient  
-    elasticsearch.clusterName=elasticsearch
+    elasticsearch.clusterName={{ .Values.nuxeo.elasticsearch.clusterName }}
     elasticsearch.addressList={{ .Release.Name }}-elasticsearch-client:9200
-    elasticsearch.indexName=nuxeo
+    elasticsearch.indexName={{ .Values.nuxeo.elasticsearch.indexName }}
 {{- end }}
   init.sh: |
     #!/bin/sh
