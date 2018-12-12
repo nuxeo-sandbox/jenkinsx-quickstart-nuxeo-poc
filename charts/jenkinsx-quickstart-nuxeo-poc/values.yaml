@@ -37,7 +37,7 @@ nuxeo:
     deploy: false
     dbname: nuxeo
   postgresql:
-    deploy: false
+    deploy: true
     dbname: nuxeo
     username: nuxeo
     password: nuxeo
@@ -55,6 +55,10 @@ mongodb:
 
 ## Override values for postgresql from https://github.com/helm/charts/blob/master/stable/postgresql/values.yaml
 postgresql:
+  image:
+    tag: 9.6.11
+  postgresqlPassword: admin
+  postgresqlDatabase: postgres
   initdbScripts:
     db-init.sql: |
       CREATE ROLE nuxeo WITH PASSWORD 'nuxeo' LOGIN;
