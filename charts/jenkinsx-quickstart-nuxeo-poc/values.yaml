@@ -34,10 +34,10 @@ nuxeo:
   terminationGracePeriodSeconds: 10
    ## set deploy to false if you don't want mongodb deployment in your env
   mongodb:
-    deploy: false
+    deploy: true
     dbname: nuxeo
   postgresql:
-    deploy: true
+    deploy: false
     dbname: nuxeo
     username: nuxeo
     password: nuxeo
@@ -45,6 +45,7 @@ nuxeo:
     clusterName: elasticsearch
     indexName: nuxeo
     deploy: true 
+## see https://github.com/jenkins-x/jx/issues/2504   
   kafka:
     deploy: false
 
@@ -84,9 +85,5 @@ kafka:
     replicaCount: 1
   prometheus:
     operator:
-      enabled: false
-
-prometheus:
-  operator:
-    enabled: false        
+      enabled: false    
 
