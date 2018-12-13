@@ -4,8 +4,8 @@
 
  ## These are modified by jx to inject the docker repositor, don't modify them
 image:
-  repository: draft
-  tag: dev
+  repository: 10.19.247.85:5000/nuxeo-sandbox/jenkinsx-quickstart-nuxeo-poc
+  tag: 1.0.24
   pullPolicy: IfNotPresent
 ## --> end local image config
 nuxeo:  
