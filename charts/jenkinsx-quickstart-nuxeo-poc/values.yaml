@@ -46,7 +46,7 @@ nuxeo:
     indexName: nuxeo
     deploy: true 
   kafka:
-    deploy: false
+    deploy: true
 
   custom_params: |-
     ## add any other params that go into nuxeo.conf
