@@ -34,10 +34,10 @@ nuxeo:
   terminationGracePeriodSeconds: 10
    ## set deploy to false if you don't want mongodb deployment in your env
   mongodb:
-    deploy: true
+    deploy: false
     dbname: nuxeo
   postgresql:
-    deploy: false
+    deploy: true
     dbname: nuxeo
     username: nuxeo
     password: nuxeo
@@ -46,7 +46,7 @@ nuxeo:
     indexName: nuxeo
     deploy: true 
   kafka:
-    deploy: true
+    deploy: false
 
   custom_params: |-
     ## add any other params that go into nuxeo.conf
