@@ -33,6 +33,18 @@ data:
     elasticsearch.addressList={{ .Release.Name }}-elasticsearch-client:9200
     elasticsearch.indexName={{ .Values.nuxeo.elasticsearch.indexName }}
 {{- end }}
+{{- if .Values.nuxeo.kafka.deploy }}
+    kafka.zkServers={{ .Release.Name }}-zookeeper:2181
+    {{- if gt .Values.kafka.replicas 2.0 }}
+    kafka.bootstrap.servers={{ .Release.Name }}-kafka-0.{{ .Release.Name }}-kafka-headless:9092,{{ .Release.Name }}-kafka-1.{{ .Release.Name }}-kafka-headless:9092,{{ .Release.Name }}-kafka-2.{{ .Release.Name }}-kafka-headless:9092
+    {{- else }}
+    kafka.bootstrap.servers={{ .Release.Name }}-kafka-0.{{ .Release.Name }}-kafka-headless:9092
+    {{- end }}  
+    kafka.topicPrefix=nuxeo-
+    kafka.enabled=true
+    nuxeo.stream.work.enabled=true
+    nuxeo.pubsub.provider=stream
+{{- end }}
   init.sh: |
     #!/bin/sh
 

@@ -14,3 +14,8 @@ dependencies:
     repository: https://kubernetes-charts.storage.googleapis.com/
     condition: nuxeo.elasticsearch.deploy
     alias: elasticsearch  
+  - name: kafka
+    version: 0.13.3
+    repository: http://storage.googleapis.com/kubernetes-charts-incubator
+    condition: nuxeo.kafka.deploy
+    alias: kafka  
