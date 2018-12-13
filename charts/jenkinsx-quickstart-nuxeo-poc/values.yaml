@@ -34,10 +34,10 @@ nuxeo:
   terminationGracePeriodSeconds: 10
    ## set deploy to false if you don't want mongodb deployment in your env
   mongodb:
-    deploy: false
+    deploy: true
     dbname: nuxeo
   postgresql:
-    deploy: true
+    deploy: false
     dbname: nuxeo
     username: nuxeo
     password: nuxeo

@@ -8,5 +8,8 @@ dependencies:
 - name: elasticsearch
   repository: https://kubernetes-charts.storage.googleapis.com/
   version: 1.15.0
-digest: sha256:ed900764636e9028efef1e2e6acfcfd925f20d46a8fd25a732c0617879efff25
-generated: 2018-12-10T23:00:10.341602-08:00
+- name: kafka
+  repository: http://storage.googleapis.com/kubernetes-charts-incubator
+  version: 0.13.3
+digest: sha256:47fd2ac06026340728d59106718c19e0e6a6155e2eb853e8a9c5dd3fe86aa7fc
+generated: 2018-12-12T15:01:03.632356-08:00
