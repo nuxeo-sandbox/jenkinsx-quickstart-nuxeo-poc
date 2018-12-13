@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: CustomResourceDefinition
+metadata:
+  name: servicemonitors.monitoring.coreos.com
+  annotations:
+    "helm.sh/hook": pre-upgrade
+spec:
+  group: monitoring.coreos.com
+  version: v1
+  names:
+    kind: ServiceMonitor
+    plural: servicemonitors
+    singular: servicemonitor
+  scope: Namespaced  
