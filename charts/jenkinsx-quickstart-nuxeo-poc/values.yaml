@@ -81,5 +81,8 @@ elasticsearch:
 kafka:
   replicas: 1
   zookeeper:
-    replicaCount: 1      
+    replicaCount: 1
+  prometheus:
+    operator:
+      enabled: false         
 
