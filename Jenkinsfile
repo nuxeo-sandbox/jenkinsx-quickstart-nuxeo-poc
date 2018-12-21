@@ -37,19 +37,17 @@ pipeline {
       environment {
         APP_NAME = 'mongodb'
         PREVIEW_VERSION = "0.0.0-SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER"
-        PREVIEW_NAMESPACE = "mongo-$BRANCH_NAME".toLowerCase()
       }
       steps {
         container('maven') {
           dir('charts/junits-mongo') {
             sh "make mongo"
-            sh "PREVIEW_NAMESPACE=${PREVIEW_NAMESPACE} jx preview --app $APP_NAME --dir ../.."
+            sh "jx preview --app $APP_NAME --namespace=${BRANCH_NAME} --dir ../.."
           }
           sh "touch /root/nuxeo-test-vcs.properties"
           sh "echo nuxeo.test.core=mongodb >> /root/nuxeo-test-vcs.properties"
-          sh "echo nuxeo.test.mongodb.server=mongodb://preview-mongodb:27017 >> /root/nuxeo-test-vcs.properties"
+          sh "echo nuxeo.test.mongodb.server=mongodb://preview-${APP_NAME}.${BRANCH_NAME}.svc.cluster.local >> /root/nuxeo-test-vcs.properties"
           sh "echo nuxeo.test.mongodb.dbname=vcstest >> /root/nuxeo-test-vcs.properties"  
-          sh "sleep 30000"
           sh "mvn clean package -Pcustomdb,mongodb"
         }
       }  
