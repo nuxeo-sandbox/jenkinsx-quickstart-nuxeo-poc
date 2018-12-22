@@ -30,7 +30,7 @@ pipeline {
         }
       }
     }
-    stage('CI Build feature branch against Mongo') {
+    stage('CI Build junits in feature branch against Mongo') {
       when {
         branch 'feature-*'
       }
@@ -40,7 +40,7 @@ pipeline {
       }
       steps {
         container('maven') {
-          dir('charts/junits-mongo') {
+          dir('charts/junits') {
             sh "make mongo"
             sh "jx preview --app $APP_NAME --namespace=${BRANCH_NAME} --dir ../.."
           }
@@ -49,6 +49,7 @@ pipeline {
           sh "echo nuxeo.test.mongodb.server=mongodb://preview-${APP_NAME}.${BRANCH_NAME}.svc.cluster.local >> /root/nuxeo-test-vcs.properties"
           sh "echo nuxeo.test.mongodb.dbname=vcstest >> /root/nuxeo-test-vcs.properties"  
           sh "mvn clean package -Pcustomdb,mongodb"
+          sh "kubectl delete namespace ${BRANCH_NAME}"
         }
       }  
     }
