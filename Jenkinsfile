@@ -53,6 +53,31 @@ pipeline {
         }
       }  
     }
+    stage('CI Build junits in feature branch against Postgres') {
+      when {
+        branch 'feature-*'
+      }
+      environment {
+        APP_NAME = "postgresql-$BRANCH_NAME"
+        PREVIEW_VERSION = "0.0.0-SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER"
+      }
+      steps {
+        container('maven') {
+         dir('charts/junits') {
+            sh "helm install --name ${APP_NAME} --namespace=${BRANCH_NAME} -f values-postgresql.yaml stable/postgresql"
+          }
+          sh "touch /root/nuxeo-test-vcs.properties"
+          sh "echo nuxeo.test.vcs.db=PostgreSQL >> /root/nuxeo-test-vcs.properties"
+          sh "echo nuxeo.test.vcs.server=${APP_NAME}-postgresql.${BRANCH_NAME}.svc.cluster.local >> /root/nuxeo-test-vcs.properties"
+          sh "echo nuxeo.test.vcs.database=vctests >> /root/nuxeo-test-vcs.properties"
+          sh "echo nuxeo.test.vcs.user=nuxeo >> /root/nuxeo-test-vcs.properties"
+          sh "echo nuxeo.test.vcs.password=nuxeo >> /root/nuxeo-test-vcs.properties"  
+          sh "mvn clean package -Pcustomdb,pgsql"
+          sh "helm del --purge {APP_NAME}"
+          sh "kubectl delete namespace ${BRANCH_NAME}"
+        }
+      }  
+    }
     stage('Build Release') {
       when {
         branch 'master'
