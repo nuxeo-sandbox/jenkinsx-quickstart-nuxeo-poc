@@ -64,7 +64,7 @@ pipeline {
       steps {
         container('maven') {
          dir('charts/junits') {
-            sh "helm install --name ${APP_NAME} --namespace=${BRANCH_NAME} -f values-postgresql.yaml stable/postgresql"
+            sh "helm install --name ${APP_NAME} --namespace=${BRANCH_NAME} -f values-postgresql.yaml stable/postgresql --version  3.1.0"
           }
           sh "touch /root/nuxeo-test-vcs.properties"
           sh "echo nuxeo.test.vcs.db=PostgreSQL >> /root/nuxeo-test-vcs.properties"
@@ -73,7 +73,7 @@ pipeline {
           sh "echo nuxeo.test.vcs.user=nuxeo >> /root/nuxeo-test-vcs.properties"
           sh "echo nuxeo.test.vcs.password=nuxeo >> /root/nuxeo-test-vcs.properties"  
           sh "mvn clean package -Pcustomdb,pgsql"
-          sh "helm del --purge {APP_NAME}"
+          sh "helm del --purge ${APP_NAME}"
           sh "kubectl delete namespace ${BRANCH_NAME}"
         }
       }  
