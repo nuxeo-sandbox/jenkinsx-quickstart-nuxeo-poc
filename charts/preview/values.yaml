@@ -16,12 +16,24 @@ cleanup:
     helm.sh/hook-delete-policy: hook-succeeded
 
   ## Values from here can be customized https://github.com/helm/charts/blob/master/stable/mongodb/values.yaml
-mongodb:
-  usePassword: false
+
+
+## if we manipulate the Makefile to use the requirments from the main chart, the conditions are under key nuxeo
+
 nuxeo:
+  kafka:
+    deploy: false 
+  postgresql:
+    deploy: false
   mongodb:
-    deploy: true  
+    deploy: true 
+  elasticsearch:
+    deploy: true        
+
+
 preview:
+  mongodb:
+    usePassword: false
   image:
     repository:
     tag:
