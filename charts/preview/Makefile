@@ -14,9 +14,4 @@ else
 	echo "platfrom $(OS) not supported to release from"
 	exit -1
 endif
-	echo "    version: $(PREVIEW_VERSION)" >> requirements.yaml
-	sed -e '1d;' requirements.yaml >> requirements.yaml.tmp
-	cat ../jenkinsx-quickstart-nuxeo-poc/requirements.yaml > requirements.yaml
-	echo '' >> requirements.yaml
-	cat requirements.yaml.tmp >> requirements.yaml
 	jx step helm build
