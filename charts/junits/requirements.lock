@@ -1,0 +1,12 @@
+dependencies:
+- name: exposecontroller
+  repository: https://chartmuseum.build.cd.jenkins-x.io
+  version: 2.3.56
+- name: exposecontroller
+  repository: https://chartmuseum.build.cd.jenkins-x.io
+  version: 2.3.56
+- name: mongodb
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 4.1.1
+digest: sha256:e3dfb4895f34f4c2ec56b9eb9d7f9287654e59a2a5b39f7e7c09ea9f2d3654f5
+generated: 2018-12-21T10:58:14.623928-08:00
