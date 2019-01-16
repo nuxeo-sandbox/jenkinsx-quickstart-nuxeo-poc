@@ -4,12 +4,8 @@ nuxeo:
     repository: draft
     tag: dev
     pullPolicy: IfNotPresent
-
-
-## Values from here can be customized https://github.com/helm/charts/blob/master/stable/mongodb/values.yaml
-nuxeo:
   mongodb:
     deploy: true
-    usePassword: false
+
 
 

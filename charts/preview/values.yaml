@@ -1,4 +1,3 @@
-
 expose:
   Annotations:
     helm.sh/hook: post-install,post-upgrade
@@ -15,16 +14,17 @@ cleanup:
     helm.sh/hook: pre-delete
     helm.sh/hook-delete-policy: hook-succeeded
 
-  ## Values from here can be customized https://github.com/helm/charts/blob/master/stable/mongodb/values.yaml
-mongodb:
-  usePassword: false
+## Modified from Makefile by jx to point to the current docker image built
 nuxeo:
-  mongodb:
-    deploy: true  
-preview:
   image:
-    repository:
-    tag:
+    repository:  
+    tag:  
     pullPolicy: IfNotPresent
+  replicaCount: 2
+  mongodb:
+    deploy: true 
+  elasticsearch:
+    deploy: false        
+
      
  

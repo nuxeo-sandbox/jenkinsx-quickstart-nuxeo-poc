@@ -1,14 +1,13 @@
-
 dependencies:
-- alias: expose
-  name: exposecontroller
-  repository: https://chartmuseum.build.cd.jenkins-x.io
-  version: 2.3.56
-- alias: cleanup
-  name: exposecontroller
-  repository: https://chartmuseum.build.cd.jenkins-x.io
-  version: 2.3.56
-## This must be the last dependecy as the version is injected dinamically at 'make preview'
-- alias: preview
-  name: jenkinsx-quickstart-nuxeo-poc
-  repository: file://../jenkinsx-quickstart-nuxeo-poc
+  - alias: expose
+    name: exposecontroller
+    repository: https://chartmuseum.build.cd.jenkins-x.io
+    version: 2.3.56
+  - alias: cleanup
+    name: exposecontroller
+    repository: https://chartmuseum.build.cd.jenkins-x.io
+    version: 2.3.56
+  - name: nuxeo
+    version: 0.1.0-SNAPSHOT
+    repository: http://jenkins-x-chartmuseum:8080
+    alias: nuxeo 
